@@ -85,5 +85,26 @@ regex pattern, then make it actually point to the right path. Changes
 the page not found error to a not callable error. Then change the 
 home_page definition from None to a funtion and funally we see that 
 seertEqual() was spelled wrong. Fix that and we're back on track.
+home_page() return the minimal HTML from HttpRresponse()
+    '<html><title>To-Do lists</title></html>'
 
+And re-run the functional test, it finds the correct title and passes.
+
+Chapter 3 Summary:
+
+    Running the Django dev server
+        python3 manage.py runserver
+
+    Running the functional tests
+        python3 functional_tests.py
+
+    Running the unit tests
+        python3 manage.py test
+
+    The unit-test/code cycle
+        1. Run the unit tests in the terminal.
+        2. Make a minimal code change in the editor.
+        3. Repeat!
+
+        (what about ???? and Profit?)
 
