@@ -70,3 +70,20 @@ Using the test.py skeleton, add a class based on TestCase to it, then
 run the unit tests from Django's test runner in manage.py
 
 $ python3 manage.py test
+
+Now replace the 'SmokeTest' (test of the test framework) with 
+something that does something interesting: import the views module and 
+look for its home_page function. Since we haven't written the it yet, we
+get an expected failure (in this case an exception) and therefor 
+permission to write some actual code. Note, it give practically the same
+error even if assertEqual is spelled wrong. Lame. Thats because its
+failing at the resolve on the line before. Fix that now.
+
+Need to add some info about how the page mapps to functions to the 
+template file superlists/urls.py, furst uncomment the home page
+regex pattern, then make it actually point to the right path. Changes
+the page not found error to a not callable error. Then change the 
+home_page definition from None to a funtion and funally we see that 
+seertEqual() was spelled wrong. Fix that and we're back on track.
+
+
