@@ -1,0 +1,72 @@
+make sure Django and Selenium are installed:
+
+$sudo pip3 install django==1.7
+$sudo pip3 install --upgrade selenium
+
+
+Define a basic functional test:
+
+      from selenium import webdriver
+
+      browser = webdriver.Firefox()
+      browser.get("http://localhost:8000")
+
+      assert 'Django' in browser.title
+
+Run the functional test, and it should assert an error. 
+
+
+$ python3 functional_tests.py
+
+I'm not sure if the current code actually is since it looks like the 
+web connection just timed out, but it may be that there was a server 
+running already (for jenkins on Apache maybe).
+
+Setup Django project:
+
+$ django-admin.py startproject superlists
+
+This adds a project to the folder (actually created the project itself
+after running the test for the first time). Now there is a file
+manage.py and a directory tree in with the initial test script
+
+$ python3 manage.py runserver
+
+Then start a new terminal window and try the test again. Actually, got
+an error about unapplied migrations, so ran 'python manage.py migrate'
+
+
+This is the basic command for invoking the tests. 
+
+$ python3 functional_test.py 
+
+Currently it just connects to the page and loosk for Django in the title
+But in future we'll add a user store and define functional tests. First
+change the title to the name of the web app (from Django to 'To Do') and
+add some prose about what a user might do when they visit the web site.
+This is the idea behind a user story. Each of the usere's imagined
+actions captures some function of the web app
+
+Now on to chapter 3. Need to add some apps (Django code is organized 
+around apps) Use their tool to start a new one called lists:
+
+$ python3 manage.py startapp lists
+
+this adds a new dir to superlists and puts some templates files there,
+including a tests.py for *unit tests*. The two go together like this:
+
+1.  write a functional tests, based on user's point of view (story)
+2.  write a tests that fails, think about what code it needs to pass
+    and these will help describe the unit tests we need.
+3.  Write the minimum app code to make it pass, iterate 2. and 3. untill
+    it looks like the functional test will get farther.
+4.  re-run funtional tests to see if they got any farther.
+
+Functional tests should help you build an application with the right 
+functionality, and guarantee you never accidentally break it. Unit 
+tests should help you to write code that’s clean and bug free.
+
+Using the test.py skeleton, add a class based on TestCase to it, then
+run the unit tests from Django's test runner in manage.py
+
+$ python3 manage.py test
