@@ -1,5 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
-def home_page():
-    pass   # not make the test pass, its the python dummy statement 'pass'
+def home_page(request):
+    return HttpResponse('<html><title>To-Do lists</title></html>')
