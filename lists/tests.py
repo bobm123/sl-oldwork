@@ -1,11 +1,9 @@
+from django.core.urlresolvers import resolve
 from django.test import TestCase
-
-# Create your tests here.
-
-class SmokeTest(TestCase):
-
-    def test_badMaths(self):
-        self.assertEqual(1 + 1, 3.4)
-
-    def test_moreBadMaths(self):
-        self.assertNotEqual(1 + 1, 2)
+from lists.views import home_page
+            
+class HomePageTest(TestCase):
+    
+    def test_RootUrlResolvesToHomePageView(self):
+        found = resolve('/')
+        self.assertEqual(found.func, home_page)
