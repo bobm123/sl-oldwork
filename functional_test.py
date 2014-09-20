@@ -7,6 +7,7 @@ class NewVisitorTest(unittest.TestCase):
     #<< Next two are special methods and run before each test case >>
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
